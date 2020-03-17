@@ -15,6 +15,9 @@ services:
             memlock:
                 soft: -1
                 hard: -1
+            nofile:
+                soft: 65535
+                hard: 65535
         volumes:
             - data01:/usr/share/elasticsearch/data
         ports:
@@ -35,6 +38,9 @@ services:
             memlock:
                 soft: -1
                 hard: -1
+            nofile:
+                soft: 65535
+                hard: 65535
         volumes:
             - data02:/usr/share/elasticsearch/data
         networks:
@@ -53,6 +59,9 @@ services:
             memlock:
                 soft: -1
                 hard: -1
+            nofile:
+                soft: 65535
+                hard: 65535
         volumes:
             - data03:/usr/share/elasticsearch/data
         networks:
