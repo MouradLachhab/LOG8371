@@ -82,6 +82,7 @@ ${path.logs}
 # For more information, consult the gateway module documentation.
 #
 # ---------------------------------- Various -----------------------------------
+network.host: 0.0.0.0
 #
 # Require explicit names when deleting indices:
 #
