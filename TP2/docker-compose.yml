@@ -1,4 +1,3 @@
-
 version: '2.2'
 services:
     es01:
@@ -7,8 +6,8 @@ services:
         environment:
             - node.name=es01
             - cluster.name=es-docker-cluster
-            - discovery.seed_hosts=es02,es03
-            - cluster.initial_master_nodes=es01,es02,es03
+            - discovery.seed_hosts=es02
+            - cluster.initial_master_nodes=es01,es02
             - bootstrap.memory_lock=true
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         ulimits:
@@ -30,8 +29,8 @@ services:
         environment:
             - node.name=es02
             - cluster.name=es-docker-cluster
-            - discovery.seed_hosts=es01,es03
-            - cluster.initial_master_nodes=es01,es02,es03
+            - discovery.seed_hosts=es01
+            - cluster.initial_master_nodes=es01,es02
             - bootstrap.memory_lock=true
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         ulimits:
@@ -47,12 +46,10 @@ services:
             - elastic
     es03:
         image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
-        container_name: es03
         environment:
-            - node.name=es03
             - cluster.name=es-docker-cluster
             - discovery.seed_hosts=es01,es02
-            - cluster.initial_master_nodes=es01,es02,es03
+            - cluster.initial_master_nodes=es01,es02
             - bootstrap.memory_lock=true
             - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
         ulimits:
@@ -63,7 +60,7 @@ services:
                 soft: 65535
                 hard: 65535
         volumes:
-            - data03:/usr/share/elasticsearch/data
+            - ./elasticsearch/logs/:/home/mmou/elasticsearch/logs/
         networks:
             - elastic
 volumes:
